@@ -33,5 +33,46 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+        <script>
+            $(document).ready(function() {
+                "use strict";
+
+                // this is a global variable that contains an array of the IDs where the mole will randomly appear
+                var squares = ['#sqr-1', '#sqr-2', '#sqr-3', '#sqr-4', '#sqr-5', '#sqr-6', '#sqr-7', '#sqr-8', '#sqr-9'];
+                // this is a global variable that contains an empty array. This is where the sequence of random squares will be pushed 
+                var sequence = [];
+
+                // this function randomly selects a square where the mole will appear 
+                function moleSquare(){
+
+                    // this is the randomizer
+                    var randomSqr = Math.floor((Math.random() * squares.length));
+
+                    // this pushes my random number into an array
+                    sequence.push(randomSqr);
+
+                    // this loops through my 'sequence' array
+                    var count = 0;
+                    var interval = 1000; // interval time in milliseconds
+
+                    var moleTurn = setInterval(function () {
+                        if (count == sequence.length) {
+                            count = 0;
+                            clearInterval(moleTurn);
+                        } else {
+                            var sqrIndex = sequence[count];
+                            var square = squares[sqrIndex];
+
+                            $(square).css('background-color', 'red').fadeToggle();
+                            count++;
+                        }
+                    }, interval);
+                };
+
+                 // This calls the moleSquare function, causing it to run on page load 
+                moleSquare();
+            });
+        </script>
     </body>
 </html>
