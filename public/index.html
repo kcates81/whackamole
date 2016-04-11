@@ -14,19 +14,37 @@
 
         <!-- Game -->
         <div id="row-1" class="col-md-10 col-md-offset-2">
-            <div id="sqr-1" class="col-md-10 col-md-offset-2"></div>
-            <div id="sqr-2" class="col-md-10 col-md-offset-2"></div>
-            <div id="sqr-3" class="col-md-10 col-md-offset-2"></div>
+            <div id="sqr-1" class="col-md-10 col-md-offset-2">
+                <div id="mole-1"></div>
+            </div>
+            <div id="sqr-2" class="col-md-10 col-md-offset-2">
+                <div id="mole-2"></div>
+            </div>
+            <div id="sqr-3" class="col-md-10 col-md-offset-2">
+                <div id="mole-3"></div>
+            </div>
         </div>
         <div id="row-2" class="col-md-10 col-md-offset-2">
-            <div id="sqr-4" class="col-md-10 col-md-offset-2"></div>
-            <div id="sqr-5" class="col-md-10 col-md-offset-2"></div>
-            <div id="sqr-6" class="col-md-10 col-md-offset-2"></div>
+            <div id="sqr-4" class="col-md-10 col-md-offset-2">
+                <div id="mole-4"></div>
+            </div>
+            <div id="sqr-5" class="col-md-10 col-md-offset-2">
+                <div id="mole-5"></div>
+            </div>
+            <div id="sqr-6" class="col-md-10 col-md-offset-2">
+                <div id="mole-6"></div>
+            </div>
         </div>
         <div id="row-3" class="col-md-10 col-md-offset-2">
-            <div id="sqr-7" class="col-md-10 col-md-offset-2"></div>
-            <div id="sqr-8" class="col-md-10 col-md-offset-2"></div>
-            <div id="sqr-9" class="col-md-10 col-md-offset-2"></div>
+            <div id="sqr-7" class="col-md-10 col-md-offset-2">
+                <div id="mole-7"></div>
+            </div>
+            <div id="sqr-8" class="col-md-10 col-md-offset-2">
+                <div id="mole-8"></div>
+            </div>
+            <div id="sqr-9" class="col-md-10 col-md-offset-2">
+                <div id="mole-9"></div>
+            </div>
         </div>
 
         <!-- jQuery CDN -->
@@ -39,7 +57,7 @@
                 "use strict";
 
                 // this is a global variable that contains an array of the IDs where the mole will randomly appear
-                var squares = ['#sqr-1', '#sqr-2', '#sqr-3', '#sqr-4', '#sqr-5', '#sqr-6', '#sqr-7', '#sqr-8', '#sqr-9'];
+                var moles = ['#mole-1', '#mole-2', '#mole-3', '#mole-4', '#mole-5', '#mole-6', '#mole-7', '#mole-8', '#mole-9'];
                 // this is a global variable that contains an empty array. This is where the sequence of random squares will be pushed 
                 var sequence = [];
 
@@ -47,10 +65,10 @@
                 function moleSquare(){
 
                     // this is the randomizer
-                    var randomSqr = Math.floor((Math.random() * squares.length));
+                    var randomMole = Math.floor((Math.random() * moles.length));
 
                     // this pushes my random number into an array
-                    sequence.push(randomSqr);
+                    sequence.push(randomMole);
 
                     // this loops through my 'sequence' array
                     var count = 0;
@@ -61,10 +79,10 @@
                             count = 0;
                             clearInterval(moleTurn);
                         } else {
-                            var sqrIndex = sequence[count];
-                            var square = squares[sqrIndex];
+                            var moleIndex = sequence[count];
+                            var mole = moles[moleIndex];
 
-                            $(square).css('background-color', 'red').fadeToggle();
+                            $(mole).css('background-color', 'red').fadeToggle();
                             count++;
                         }
                     }, interval);
