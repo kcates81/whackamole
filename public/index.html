@@ -24,6 +24,13 @@
             
         </div>
 
+        <!-- Timer -->
+        <div id= "timer-text" class="timer col-md-6 col-md-offset-3">
+            <h3>Timer:</h3> 
+        </div>
+        <div id="timer" class="timer col-md-6 col-md-offset-3">
+            
+        </div>
         <!-- Game -->
         <div id="game">
             <div id="row-1" class="col-md-10 col-md-offset-2">
@@ -74,15 +81,15 @@
                 var moles = ['#mole-1', '#mole-2', '#mole-3', '#mole-4', '#mole-5', '#mole-6', '#mole-7', '#mole-8', '#mole-9'];
 
                 // these are global variables that I will use in my code 
-                var moleIndex, mole;
+                var moleIndex, mole, start;
                 var count = 0;
                 var moleTurn;
                 var interval;
+                var timerInterval;
 
                 // this function randomly selects a square where the mole will appear 
                 function moleSquare(){
 
-                    
                     interval = 1000; // interval time in milliseconds
                     var randomMole = 0;
 
@@ -102,12 +109,27 @@
                     }, interval);
                 };
 
-                 // This calls the moleSquare function, causing it to run on page load 
-                // moleSquare();
+                 // This is the timer
+                function timer () {
+                    start = 0
+                    console.log(start);
+                    timerInterval = setInterval(function() {
+                        if (start < 30) {
+                        start++;
+                        console.log(start);
+                        $('#timer').html('<h3>' + start + " Seconds" + '</h3>');
+                        } else {
+                           clearInterval(moleTurn);   
+                        }
+                    }, 1000);
+                };
 
                 // This click event starts the game when the start button is pressed
                 $('#start').click(function (event) {
+                    // This starts the game when the start button is clicked
                     moleSquare();
+                    // This starts the timer when the start button is clicked
+                    timer();
                 });
 
                 // This makes the game go faster as the count gets higher
@@ -133,7 +155,9 @@
                         console.log(count);
                         console.log(interval);
                     } if (count == 30) {
-                        clearInterval(moleTurn);
+                        interval = 200;
+                        console.log(count);
+                        console.log(interval);
                     }    
                 }; 
 
@@ -155,6 +179,8 @@
                         console.log('Wrong square');
                     }
                 });
+
+               
             });
         </script>
     </body>
