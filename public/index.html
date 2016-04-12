@@ -16,17 +16,21 @@
         <div id="start" class="col-md-6 col-md-offset-3">
             <button id="start" type="submit">Start</button>
         </div>
+        
         <!-- Score -->
         <div id="score-text" class=" score col-md-6 col-md-offset-3">
             <h3>Your Score: </h3>
         </div>
-        <div id="score" class="score col-md-6 col-md-offset-3">
-            
-        </div>
+        <div id="score" class="score col-md-6 col-md-offset-3"> 
 
+        </div>
+        <div id="high-score" class="score col-md-6 col-md-offset-3">
+            <h3>High Score: </h3>
+        </div>
+       
         <!-- Timer -->
         <div id= "timer-text" class="timer col-md-6 col-md-offset-3">
-            <h3>Timer:</h3> 
+            <h3>Timer: </h3> 
         </div>
         <div id="timer" class="timer col-md-6 col-md-offset-3">
             
@@ -86,6 +90,7 @@
                 var moleTurn;
                 var interval;
                 var timerInterval;
+                var highScore = [];
 
                 // this function randomly selects a square where the mole will appear 
                 function moleSquare(){
@@ -112,52 +117,53 @@
                  // This is the timer
                 function timer () {
                     start = 0
-                    console.log(start);
+                   
                     timerInterval = setInterval(function() {
                         if (start < 30) {
                         start++;
-                        console.log(start);
                         $('#timer').html('<h3>' + start + " Seconds" + '</h3>');
                         } else {
-                           clearInterval(moleTurn);   
+                            // turns off game
+                            clearInterval(moleTurn);
+
+                            // stops reading clicks
+                            $('.square').off();
+
+                            //reactivates the start button
+                            clickStart();
                         }
                     }, 1000);
                 };
 
                 // This click event starts the game when the start button is pressed
-                $('#start').click(function (event) {
+
+                function clickStart() {
+                    $('#start').click(function (event) {
                     // This starts the game when the start button is clicked
                     moleSquare();
+
                     // This starts the timer when the start button is clicked
                     timer();
-                });
+                    });
+                };
 
+                // This calls the clickStart function
+                clickStart();
+                
                 // This makes the game go faster as the count gets higher
                 function speedIncrease() {
                     if (count == 5) {
                         interval = 900;
-                        console.log(count);
-                        console.log(interval);
                     } if (count == 10) {
                         interval = 800;
-                        console.log(count);
-                        console.log(interval);
                     } if (count == 15) {
                         interval = 750;
-                        console.log(count);
-                        console.log(interval);
                     } if (count == 20) {
                         interval = 500;
-                        console.log(count);
-                        console.log(interval);
                     } if (count == 25){
                         interval = 250;
-                        console.log(count);
-                        console.log(interval);
                     } if (count == 30) {
                         interval = 200;
-                        console.log(count);
-                        console.log(interval);
                     }    
                 }; 
 
@@ -168,6 +174,8 @@
 
                 $('.square').click(function(event){
                     var id = event.target.id;
+                    
+
                     if ('#' + id == mole) {
                         count++;
                         // This calls the speedIncrease function
@@ -180,7 +188,9 @@
                     }
                 });
 
-               
+               // This remembers the high score
+               highScore.push(count);
+               console.log(highScore);
             });
         </script>
     </body>
