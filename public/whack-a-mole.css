@@ -79,6 +79,7 @@
 
 .score {
     text-align: center;
+    display: inline-block;
 }
 .square {
     width: 200px;
