@@ -12,6 +12,10 @@
         <!-- Page Header -->
         <h1 id="heading">Whack-a-Mole Game</h1>
 
+        <!-- Start Button -->
+        <div id="start" class="col-md-6 col-md-offset-3">
+            <button id="start" type="submit">Start</button>
+        </div>
         <!-- Score -->
         <div id="score-text" class=" score col-md-6 col-md-offset-3">
             <h3>Your Score: </h3>
@@ -99,7 +103,12 @@
                 };
 
                  // This calls the moleSquare function, causing it to run on page load 
-                moleSquare();
+                // moleSquare();
+
+                // This click event starts the game when the start button is pressed
+                $('#start').click(function (event) {
+                    moleSquare();
+                });
 
                 // This makes the game go faster as the count gets higher
                 function speedIncrease() {
