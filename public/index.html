@@ -129,8 +129,11 @@
                             // stops reading clicks
                             $('.square').off();
 
+                            // This remembers the high score
+                            $('#high-score').html('<h3>High Score: ' + count + '</h3');  
+
                             //reactivates the start button
-                            clickStart();
+                            // clickStart();
                         }
                     }, 1000);
                 };
@@ -188,9 +191,8 @@
                     }
                 });
 
-               // This remembers the high score
-               highScore.push(count);
-               console.log(highScore);
+               
+               
             });
         </script>
     </body>
