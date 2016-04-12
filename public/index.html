@@ -13,10 +13,10 @@
         <h1 id="heading">Whack-a-Mole Game</h1>
 
         <!-- Score -->
-        <div id="score-text" class="col-md-10 col-md-offset-2">
+        <div id="score-text" class=" score col-md-6 col-md-offset-3">
             <h3>Your Score: </h3>
         </div>
-        <div id="score">
+        <div id="score" class="score col-md-6 col-md-offset-3">
             
         </div>
 
@@ -129,11 +129,9 @@
                 }; 
 
                 // This checks to see if the user has clicked the correct square
-                var currentClick = 0;
-
                 function checkClick(click) {
                     return click == squareClicked;
-                   }
+                };
 
                 $('.square').click(function(event){
                     var id = event.target.id;
@@ -141,10 +139,9 @@
                         count++;
                         // This calls the speedIncrease function
                         speedIncrease();
-                        console.log(count);
-                        console.log('You clicked the right square');
-                        $('#score').html('<h3>' + count + '</h3');
                         
+                        // This adds the score above the game board 
+                        $('#score').html('<h3>' + count + '</h3');   
                     } else {
                         console.log('Wrong square');
                     }
