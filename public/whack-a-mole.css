@@ -1,6 +1,7 @@
 #game-messages{
     text-align: center;
 }
+
 #heading {
     text-align: center;
 }
@@ -12,63 +13,7 @@ img {
     margin: .5em;
 }
 
-#mole-1 {
-    width: 150px;
-    height: 150px;
-    padding: .5em;
-    margin: .5em;
-}
-
-#mole-2 {
-    width: 150px;
-    height: 150px;
-    padding: .5em;
-    margin: .5em;
-}
-
-#mole-3 {
-    width: 150px;
-    height: 150px;
-    padding: .5em;
-    margin: .5em;
-}
-
-#mole-4 {
-    width: 150px;
-    height: 150px;
-    padding: .5em;
-    margin: .5em;
-}
-
-#mole-5 {
-    width: 150px;
-    height: 150px;
-    padding: .5em;
-    margin: .5em;
-}
-
-#mole-6 {
-    width: 150px;
-    height: 150px;
-    padding: .5em;
-    margin: .5em;
-}
-
-#mole-7 {
-    width: 150px;
-    height: 150px;
-    padding: .5em;
-    margin: .5em;
-}
-
-#mole-8 {
-    width: 150px;
-    height: 150px;
-    padding: .5em;
-    margin: .5em;
-}
-
-#mole-9 {
+.mole {
     width: 150px;
     height: 150px;
     padding: .5em;
