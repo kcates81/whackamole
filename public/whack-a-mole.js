@@ -14,7 +14,7 @@
     // this function randomly selects a square where the mole will appear 
     function moleSquare(){
 
-        interval = 2000; // interval time in milliseconds
+        interval = 2000; // interval time in milliseconds (game starts to have issues if the interval is faster)
         var randomMole = 0;
 
         moleTurn = setInterval(function () {
@@ -28,8 +28,8 @@
             // This reassigns the value of the mole variable to the randomMole value 
             mole = moles[randomMole];
 
-            // This changes the color of the square where the random mole is to red 
-            $(mole).css('background-size', 'cover')
+            // This inserts the mole picture into the square the randomizer selected
+            $(mole).css('background-size', 'cover');
             $(mole).css('background-image', 'url(/mole.jpg)').fadeIn(interval/2);
         }, interval);
     };
@@ -49,7 +49,7 @@
                 // stops reading clicks
                 $('.square').off();
 
-                // This remembers the high score
+                // This stores the high score at the end of the game
                 $('#high-score').html('<h3>High Score: ' + count + '</h3');  
 
                 // This tells the user that the game is over
@@ -59,7 +59,6 @@
     };
 
     // This click event starts the game when the start button is pressed
-
     function clickStart() {
         $('#start').click(function (event) {
         // This starts the game when the start button is clicked
@@ -81,16 +80,13 @@
     $('.square').click(function(event){
         // this checks the id of the square that was randomly generated against the id of the square the user clicks
         var id = event.target.id;                    
-        console.log( 'id is:' + id);
-        console.log('mole is: ' + mole);
+        
         if ('#' + id == mole) {
             count++;
             
             // This adds the score above the game board 
             $('#score').html('<h3>' + count + '</h3');   
-        } else {
-            console.log('Wrong square');
-        }
+        } 
     });
 
 });
