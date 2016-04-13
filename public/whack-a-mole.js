@@ -1,4 +1,4 @@
- $(document).ready(function() {
+$(document).ready(function() {
     "use strict";
 
     // this is a global variable that contains an array of the IDs where the mole will randomly appear
