@@ -10,7 +10,6 @@
     var moleTurn;
     var interval;
     var timerInterval;
-    var highScore = [];
 
     // this function randomly selects a square where the mole will appear 
     function moleSquare(){
@@ -53,8 +52,8 @@
                 // This remembers the high score
                 $('#high-score').html('<h3>High Score: ' + count + '</h3');  
 
-                //reactivates the start button
-                // clickStart();
+                // This tells the user that the game is over
+                $('#game-messages').html('<h3>Game Over</h3>');
             }
         }, 1000);
     };
@@ -80,6 +79,7 @@
     };
 
     $('.square').click(function(event){
+        // this checks the id of the square that was randomly generated against the id of the square the user clicks
         var id = event.target.id;                    
         console.log( 'id is:' + id);
         console.log('mole is: ' + mole);
