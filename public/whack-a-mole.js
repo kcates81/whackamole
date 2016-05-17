@@ -11,6 +11,23 @@ $(document).ready(function() {
     var interval;
     var timerInterval;
 
+
+    function checkClick(event){
+        console.log('Check click is running!');
+        // this checks the id of the square that was randomly generated against the id of the square the user clicks
+        var id = event.target.id;                    
+        
+        if ('#' + id == mole) {
+            count++;
+            
+            // This adds the score above the game board 
+            $('#score').html('<h3>' + count + '</h3');  
+            
+            // stops reading clicks
+            $('.square').off(); 
+        }    
+    };
+
     // this function randomly selects a square where the mole will appear 
     function moleSquare(){
 
@@ -31,11 +48,18 @@ $(document).ready(function() {
             // This inserts the mole picture into the square the randomizer selected
             $(mole).css('background-size', 'cover');
             $(mole).css('background-image', 'url(/mole.jpg)').fadeIn(interval/2);
+
+            // stops reading clicks
+            $('.square').off();
+            
+            //This attaches my event listener that will listen for clicks again
+            $('.square').click(checkClick);
+
         }, interval);
     };
 
      // This is the timer
-    function timer () {
+    function timer() {
         start = 0
        
         timerInterval = setInterval(function() {
@@ -68,23 +92,6 @@ $(document).ready(function() {
         timer();
         });
     };
-
-    // This checks to see if the user has clicked the correct square
-    function checkClick(click) {
-        return click == squareClicked;
-    };
-
-    $('.square').click(function(event){
-        // this checks the id of the square that was randomly generated against the id of the square the user clicks
-        var id = event.target.id;                    
-        
-        if ('#' + id == mole) {
-            count++;
-            
-            // This adds the score above the game board 
-            $('#score').html('<h3>' + count + '</h3');   
-        } 
-    });
 
     // This calls the clickStart function
     clickStart();
