@@ -69,9 +69,6 @@ $(document).ready(function() {
         });
     };
 
-    // This calls the clickStart function
-    clickStart();
-
     // This checks to see if the user has clicked the correct square
     function checkClick(click) {
         return click == squareClicked;
@@ -88,5 +85,8 @@ $(document).ready(function() {
             $('#score').html('<h3>' + count + '</h3');   
         } 
     });
+
+    // This calls the clickStart function
+    clickStart();
 
 });
