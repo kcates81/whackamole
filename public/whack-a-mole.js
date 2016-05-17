@@ -40,8 +40,8 @@ $(document).ready(function() {
        
         timerInterval = setInterval(function() {
             if (start < 30) {
-            start++;
-            $('#timer').html('<h3>' + start + " Seconds" + '</h3>');
+                start++;
+                $('#timer').html('<h3>' + start + " Seconds" + '</h3>');
             } else {
                 // turns off game
                 clearInterval(moleTurn);
