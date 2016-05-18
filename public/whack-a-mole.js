@@ -11,7 +11,6 @@ $(document).ready(function() {
     var interval;
     var timerInterval;
 
-
     function checkClick(event){
         console.log('Check click is running!');
         // this checks the id of the square that was randomly generated against the id of the square the user clicks
@@ -51,7 +50,7 @@ $(document).ready(function() {
 
             // stops reading clicks
             $('.square').off();
-            
+
             //This attaches my event listener that will listen for clicks again
             $('.square').click(checkClick);
 
@@ -76,8 +75,15 @@ $(document).ready(function() {
                 // This stores the high score at the end of the game
                 $('#high-score').html('<h3>High Score: ' + count + '</h3');  
 
+                // This clears the score above the game board 
+                $('#score').html('<h3> </h3'); 
+
                 // This tells the user that the game is over
                 $('#game-messages').html('<h3>Game Over</h3>');
+
+                // This clears the timer (fixes issue that had the timer speed up when start was clicked again)
+                clearInterval(timerInterval);
+
             }
         }, 1000);
     };
