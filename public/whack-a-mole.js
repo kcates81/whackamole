@@ -84,6 +84,9 @@ $(document).ready(function() {
                 // This clears the mole pictures once game is over
                 $(mole).css('background-color', 'white').fadeOut(interval/2);
 
+                // Resets count to 0 so when you start a new game the new score starts at 1
+                count = 0;
+
                 // This clears the timer (fixes issue that had the timer speed up when start was clicked again)
                 clearInterval(timerInterval);
 
