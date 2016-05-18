@@ -81,6 +81,9 @@ $(document).ready(function() {
                 // This tells the user that the game is over
                 $('#game-messages').html('<h3>Game Over</h3>');
 
+                // This clears the mole pictures once game is over
+                $(mole).css('background-color', 'white').fadeOut(interval/2);
+
                 // This clears the timer (fixes issue that had the timer speed up when start was clicked again)
                 clearInterval(timerInterval);
 
